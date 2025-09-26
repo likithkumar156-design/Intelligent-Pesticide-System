@@ -761,9 +761,33 @@
     </style>
 </head>
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector" style="background: #059669; color: white; padding: 8px 0; text-align: center; font-size: 0.9rem;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                📞 <strong>Farmer Helpline:</strong> <a href="tel:+919876543210" style="color: white; text-decoration: none;">+91 98765-43210</a> | 
+                <a href="tel:+911800123456" style="color: white; text-decoration: none;">1800-123-456</a> (Toll Free)
+            </div>
+            <div>
+                🌐 <strong>Language / भाषा:</strong>
+                <select id="languageSelector" onchange="changeLanguage(this.value)" style="margin-left: 10px; padding: 4px 8px; border-radius: 4px; border: none; font-weight: 600;">
+                    <option value="english">English</option>
+                    <option value="hindi">हिंदी (Hindi)</option>
+                    <option value="tamil">தமிழ் (Tamil)</option>
+                    <option value="telugu">తెలుగు (Telugu)</option>
+                    <option value="kannada">ಕನ್ನಡ (Kannada)</option>
+                    <option value="punjabi">ਪੰਜਾਬੀ (Punjabi)</option>
+                    <option value="gujarati">ગુજરાતી (Gujarati)</option>
+                    <option value="marathi">मराठी (Marathi)</option>
+                    <option value="bengali">বাংলা (Bengali)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
     <!-- Status Banner -->
     <div class="status-banner">
-        🌱 System Online - Live Data Updates - No Login Required - Public Access
+        <span id="statusText">🌱 System Online - Live Data Updates - No Login Required - Free for All Farmers</span>
     </div>
 
     <!-- Header -->
@@ -772,20 +796,18 @@
             <nav class="nav">
                 <div class="logo">
                     <div class="logo-icon">🌱</div>
-                    <span>Intelligent Pesticide System</span>
+                    <span id="logoText">Smart Farming System</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#control">IoT Control</a></li>
-                    <li><a href="#detection">AI Detection</a></li>
-                    <li><a href="#camera-feeds">Live Cameras</a></li>
-                    <li><a href="#field-management">Field Management</a></li>
-                    <li><a href="#reports">Reports</a></li>
-                    <li><a href="#analytics">Analytics</a></li>
-                    <li><a href="#notifications">Alerts</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#technology">Tech Stack</a></li>
+                    <li><a href="#home" class="active" id="nav-home">🏠 Home</a></li>
+                    <li><a href="#dashboard" id="nav-dashboard">📈 My Farm</a></li>
+                    <li><a href="#control" id="nav-control">🎮 Controls</a></li>
+                    <li><a href="#detection" id="nav-detection">🔬 Disease Check</a></li>
+                    <li><a href="#camera-feeds" id="nav-camera">📹 Live Camera</a></li>
+                    <li><a href="#field-management" id="nav-field">🗺️ Field Map</a></li>
+                    <li><a href="#reports" id="nav-reports">📄 Reports</a></li>
+                    <li><a href="#notifications" id="nav-notifications">🔔 Alerts</a></li>
+                    <li><a href="#features" id="nav-features">✨ Features</a></li>
                 </ul>
             </nav>
         </div>
@@ -794,11 +816,33 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>Smart Agriculture Revolution</h1>
-            <p>Reduce pesticide usage by up to 60% while maintaining optimal crop health through AI-powered precision application and real-time monitoring technology.</p>
+            <h1 id="heroTitle">🌾 Smart Farming for Indian Farmers</h1>
+            <p id="heroDesc">🌱 Use 60% less pesticide and keep your crops healthy | Save money and increase yield with AI technology | Designed specially for Indian farmers</p>
             <div class="hero-buttons">
-                <a href="#dashboard" class="btn btn-primary">View Live Dashboard</a>
-                <a href="#reports" class="btn btn-secondary">Generate Plant Reports</a>
+                <a href="#dashboard" class="btn btn-primary" id="dashboardBtn">📈 View My Farm</a>
+                <a href="#reports" class="btn btn-secondary" id="reportsBtn">📄 Generate Reports</a>
+            </div>
+            
+            <!-- Quick Contact for Farmers -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #f0f9ff; border-radius: 12px; border: 2px solid #059669;">
+                <h3 style="color: #059669; margin-bottom: 1rem; text-align: center;" id="contactTitle">📞 Need Help? Contact Our Farm Experts</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+                    <div style="padding: 1rem; background: white; border-radius: 8px;">
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;" id="contact-main">📞 Main Helpline</div>
+                        <a href="tel:+919876543210" style="color: #1f2937; text-decoration: none; font-weight: 600;">+91 98765-43210</a>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">24x7 Available</div>
+                    </div>
+                    <div style="padding: 1rem; background: white; border-radius: 8px;">
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;" id="contact-toll">☎️ Toll Free</div>
+                        <a href="tel:+911800123456" style="color: #1f2937; text-decoration: none; font-weight: 600;">1800-123-456</a>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">Free Call</div>
+                    </div>
+                    <div style="padding: 1rem; background: white; border-radius: 8px;">
+                        <div style="font-size: 1.2rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;" id="contact-whatsapp">💬 WhatsApp</div>
+                        <a href="https://wa.me/919876543210" style="color: #1f2937; text-decoration: none; font-weight: 600;">+91 98765-43210</a>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">Chat Support</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -912,7 +956,7 @@
     <!-- Live Dashboard -->
     <section id="dashboard" class="stats-section">
         <div class="container">
-            <h2 class="section-title">Live System Statistics</h2>
+            <h2 class="section-title" id="dashboardTitle">📊 Your Farm Live Statistics</h2>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number stat-green" id="totalPlants">1,247</div>
@@ -2165,6 +2209,127 @@
         console.log('📊 Performance Analytics dashboard active');
         console.log('🛠️ Technology stack information available');
         console.log('🔗 Ready for deployment and sharing!');
+        
+        // Multilingual support
+        const i18n = {
+            english: {
+                logoText: 'Smart Farming System',
+                statusText: '🌱 System Online - Live Data Updates - No Login Required - Free for All Farmers',
+                nav: { home: '🏠 Home', dashboard: '📈 My Farm', control: '🎮 Controls', detection: '🔬 Disease Check', camera: '📹 Live Camera', field: '🗺️ Field Map', reports: '📄 Reports', notifications: '🔔 Alerts', features: '✨ Features' },
+                heroTitle: '🌾 Smart Farming for Indian Farmers',
+                heroDesc: '🌱 Use 60% less pesticide and keep your crops healthy | Save money and increase yield with AI technology | Designed specially for Indian farmers',
+                dashboardTitle: '📊 Your Farm Live Statistics',
+                contactTitle: '📞 Need Help? Contact Our Farm Experts',
+                contactMain: '📞 Main Helpline',
+                contactToll: '☎️ Toll Free',
+                contactWhatsApp: '💬 WhatsApp',
+                btnDashboard: '📈 View My Farm',
+                btnReports: '📄 Generate Reports'
+            },
+            hindi: {
+                logoText: 'स्मार्ट खेती प्रणाली',
+                statusText: '🌱 सिस्टम चालू है - लाइव डेटा अपडेट - कोई लॉगिन आवश्यक नहीं - सभी किसानों के लिए मुफ्त',
+                nav: { home: '🏠 मुख्य पृष्ठ', dashboard: '📈 खेत की जानकारी', control: '🎮 नियंत्रण', detection: '🔬 बीमारी जांच', camera: '📹 लाइव कैमरा', field: '🗺️ खेत मानचित्र', reports: '📄 रिपोर्ट', notifications: '🔔 अलर्ट', features: '✨ सुविधाएं' },
+                heroTitle: '🌾 भारतीय किसानों के लिए स्मार्ट खेती',
+                heroDesc: '🌱 60% कम दवाई का उपयोग करें और फसल को स्वस्थ रखें | एआई तकनीक से खर्च कम करें और पैदावार बढ़ाएं',
+                dashboardTitle: '📊 आपके खेत की लाइव जानकारी',
+                contactTitle: '📞 सहायता चाहिए? हमारे कृषि विशेषज्ञ से संपर्क करें',
+                contactMain: '📞 मुख्य हेल्पलाइन',
+                contactToll: '☎️ टोल फ्री',
+                contactWhatsApp: '💬 व्हाट्सएप',
+                btnDashboard: '📈 खेत की जानकारी देखें',
+                btnReports: '📄 रिपोर्ट बनाएं'
+            },
+            tamil: {
+                logoText: 'ஸ்மார்ட் விவசாயம்',
+                statusText: '🌱 கணினி இயங்குகிறது - நேரடி தரவு - உள்நுழைவு தேவையில்லை - எல்லா விவசாயிகளுக்கும் இலவசம்',
+                nav: { home: '🏠 முகப்பு', dashboard: '📈 என் பண்ணை', control: '🎮 கட்டுப்பாடு', detection: '🔬 நோய் பரிசோதனை', camera: '📹 நேரடி கேமரா', field: '🗺️ வயல் வரைபடம்', reports: '📄 அறிக்கைகள்', notifications: '🔔 அறிவிப்புகள்', features: '✨ அம்சங்கள்' },
+                heroTitle: '🌾 இந்திய விவசாயிகளுக்கான ஸ்மார்ட் விவசாயம்',
+                heroDesc: '🌱 60% குறைவான பூச்சி மருந்து | செயற்கை நுண்ணறிவுடன் அதிக விளைச்சல்',
+                dashboardTitle: '📊 உங்கள் பண்ணையின் நேரடி தகவல்',
+                contactTitle: '📞 உதவி வேண்டுமா? எங்களை தொடர்பு கொள்ளுங்கள்',
+                contactMain: '📞 முதன்மை உதவி எண்',
+                contactToll: '☎️ டோல் ஃப்ரீ',
+                contactWhatsApp: '💬 வாட்ஸ்அப்',
+                btnDashboard: '📈 என் பண்ணை',
+                btnReports: '📄 அறிக்கை உருவாக்கு'
+            },
+            telugu: {
+                logoText: 'స్మార్ట్ వ్యవసాయం',
+                statusText: '🌱 సిస్టమ్ ఆన్‌లైన్‌లో ఉంది - లైవ్ డేటా - లాగిన్ అవసరం లేదు - రైతులకు ఉచితం',
+                nav: { home: '🏠 హోమ్', dashboard: '📈 నా పొలం', control: '🎮 నియంత్రణలు', detection: '🔬 వ్యాధి తనిఖీ', camera: '📹 లైవ్ కెమెరా', field: '🗺️ ఫీల్డ్ మ్యాప్', reports: '📄 రిపోర్టులు', notifications: '🔔 అలర్ట్స్', features: '✨ ఫీచర్లు' },
+                heroTitle: '🌾 భారతీయ రైతుల కోసం స్మార్ట్ వ్యవసాయం',
+                heroDesc: '🌱 60% తక్కువ పురుగు మందులు | AI తో ఖర్చు తగ్గించి దిగుబడి పెంచండి',
+                dashboardTitle: '📊 మీ పొలం లైవ్ గణాంకాలు',
+                contactTitle: '📞 సహాయం కావాలా? మమ్మల్ని సంప్రదించండి',
+                contactMain: '📞 ప్రధాన హెల్ప్‌లైన్',
+                contactToll: '☎️ టోల్ ఫ్రీ',
+                contactWhatsApp: '💬 వాట్సాప్',
+                btnDashboard: '📈 నా పొలం చూడండి',
+                btnReports: '📄 రిపోర్ట్ తయారు చేయండి'
+            },
+            kannada: {
+                logoText: 'ಸ್ಮಾರ್ಟ್ ಕೃಷಿ',
+                statusText: '🌱 ವ್ಯವಸ್ಥೆ ಆನ್‌ಲೈನ್ - ಲೈವ್ ಡೇಟಾ - ಲಾಗಿನ್ ಬೇಡ - ಎಲ್ಲ ರೈತರಿಗೆ ಉಚಿತ',
+                nav: { home: '🏠 ಮನೆ', dashboard: '📈 ನನ್ನ ಹೊಲ', control: '🎮 ನಿಯಂತ್ರಣಗಳು', detection: '🔬 ರೋಗ ಪರಿಶೀಲನೆ', camera: '📹 ಲೈವ್ ಕ್ಯಾಮೆರಾ', field: '🗺️ ಹೊಲ ನಕ್ಷೆ', reports: '📄 ವರದಿಗಳು', notifications: '🔔 ಅಲರ್ಟ್‌ಗಳು', features: '✨ ವೈಶಿಷ್ಟ್ಯಗಳು' },
+                heroTitle: '🌾 ಭಾರತೀಯ ರೈತರಿಗೆ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ',
+                heroDesc: '🌱 60% ಕಡಿಮೆ ಕೀಟನಾಶಕ | AI ಮೂಲಕ ವೆಚ್ಚ ಕಡಿಮೆ, ಉತ್ಪಾದನೆ ಹೆಚ್ಚು',
+                dashboardTitle: '📊 ನಿಮ್ಮ ಹೊಲದ ಲೈವ್ ಮಾಹಿತಿ',
+                contactTitle: '📞 ಸಹಾಯ ಬೇಕೆ? ಸಂಪರ್ಕಿಸಿ',
+                contactMain: '📞 ಮುಖ್ಯ ಸಹಾಯವಾಣಿ',
+                contactToll: '☎️ ಟೋಲ್ ಫ್ರೀ',
+                contactWhatsApp: '💬 ವಾಟ್ಸಾಪ್',
+                btnDashboard: '📈 ನನ್ನ ಹೊಲ',
+                btnReports: '📄 ವರದಿ ಸೃಷ್ಟಿಸು'
+            },
+            punjabi: {
+                logoText: 'ਸਮਾਰਟ ਖੇਤੀ ਪ੍ਰਣਾਲੀ',
+                statusText: '🌱 ਸਿਸਟਮ ਆਨਲਾਈਨ - ਲਾਈਵ ਡਾਟਾ - ਲਾਗਇਨ ਦੀ ਲੋੜ ਨਹੀਂ - ਸਾਰੇ ਕਿਸਾਨਾਂ ਲਈ ਮੁਫ਼ਤ',
+                nav: { home: '🏠 ਮੁੱਖ', dashboard: '📈 ਮੇਰਾ ਖੇਤ', control: '🎮 ਕੰਟਰੋਲ', detection: '🔬 ਬਿਮਾਰੀ ਜਾਂਚ', camera: '📹 ਲਾਈਵ ਕੈਮਰਾ', field: '🗺️ ਖੇਤ ਨਕਸ਼ਾ', reports: '📄 ਰਿਪੋਰਟਾਂ', notifications: '🔔 ਸੁਚੇਤਨ', features: '✨ ਫੀਚਰ' },
+                heroTitle: '🌾 ਭਾਰਤੀ ਕਿਸਾਨਾਂ ਲਈ ਸਮਾਰਟ ਖੇਤੀ',
+                heroDesc: '🌱 60% ਘੱਟ ਜ਼ਹਿਰ | AI ਨਾਲ ਖਰਚ ਘਟਾਓ, ਪੈਦਾਵਾਰ ਵਧਾਓ',
+                dashboardTitle: '📊 ਤੁਹਾਡੇ ਖੇਤ ਦੇ ਲਾਈਵ ਅੰਕੜੇ',
+                contactTitle: '📞 ਮਦਦ ਚਾਹੀਦੀ ਹੈ? ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ',
+                contactMain: '📞 ਮੁੱਖ ਹੈਲਪਲਾਈਨ',
+                contactToll: '☎️ ਟੋਲ ਫਰੀ',
+                contactWhatsApp: '💬 ਵਟਸਐਪ',
+                btnDashboard: '📈 ਮੇਰਾ ਖੇਤ',
+                btnReports: '📄 ਰਿਪੋਰਟ ਬਣਾਓ'
+            }
+        };
+        
+        function changeLanguage(lang) {
+            const t = i18n[lang] || i18n.english;
+            // Top bar
+            document.getElementById('statusText').textContent = t.statusText;
+            // Logo
+            document.getElementById('logoText').textContent = t.logoText;
+            // Nav
+            document.getElementById('nav-home').textContent = t.nav.home;
+            document.getElementById('nav-dashboard').textContent = t.nav.dashboard;
+            document.getElementById('nav-control').textContent = t.nav.control;
+            document.getElementById('nav-detection').textContent = t.nav.detection;
+            document.getElementById('nav-camera').textContent = t.nav.camera;
+            document.getElementById('nav-field').textContent = t.nav.field;
+            document.getElementById('nav-reports').textContent = t.nav.reports;
+            document.getElementById('nav-notifications').textContent = t.nav.notifications;
+            document.getElementById('nav-features').textContent = t.nav.features;
+            // Hero
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroDesc').textContent = t.heroDesc;
+            document.getElementById('dashboardBtn').textContent = t.btnDashboard;
+            document.getElementById('reportsBtn').textContent = t.btnReports;
+            // Contact
+            document.getElementById('contactTitle').textContent = t.contactTitle;
+            document.getElementById('contact-main').textContent = t.contactMain;
+            document.getElementById('contact-toll').textContent = t.contactToll;
+            document.getElementById('contact-whatsapp').textContent = t.contactWhatsApp;
+            // Dashboard title
+            document.getElementById('dashboardTitle').textContent = t.dashboardTitle;
+        }
+        
+        // Set default language to English
+        changeLanguage('english');
         
         // IoT Control Functions
         function manualSpray(unitId) {
