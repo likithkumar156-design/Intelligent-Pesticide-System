@@ -799,15 +799,15 @@
                     <span id="logoText">Smart Farming System</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home" class="active" id="nav-home">🏠 Home</a></li>
-                    <li><a href="#dashboard" id="nav-dashboard">📈 My Farm</a></li>
-                    <li><a href="#control" id="nav-control">🎮 Controls</a></li>
-                    <li><a href="#detection" id="nav-detection">🔬 Disease Check</a></li>
-                    <li><a href="#camera-feeds" id="nav-camera">📹 Live Camera</a></li>
-                    <li><a href="#field-management" id="nav-field">🗺️ Field Map</a></li>
-                    <li><a href="#reports" id="nav-reports">📄 Reports</a></li>
-                    <li><a href="#notifications" id="nav-notifications">🔔 Alerts</a></li>
-                    <li><a href="#features" id="nav-features">✨ Features</a></li>
+                    <li><a href="#home" class="active" id="nav-home">Home</a></li>
+                    <li><a href="#dashboard" id="nav-dashboard">Farm</a></li>
+                    <li><a href="#control" id="nav-control">Controls</a></li>
+                    <li><a href="#detection" id="nav-detection">Disease Check</a></li>
+                    <li><a href="#camera-feeds" id="nav-camera">Live Camera</a></li>
+                    <li><a href="#field-management" id="nav-field">Field Map</a></li>
+                    <li><a href="#reports" id="nav-reports">Reports</a></li>
+                    <li><a href="#notifications" id="nav-notifications">Alerts</a></li>
+                    <li><a href="#features" id="nav-features">Features</a></li>
                 </ul>
             </nav>
         </div>
@@ -850,8 +850,8 @@
     <!-- IoT Control Panel -->
     <section id="control" class="features-section">
         <div class="container">
-            <h2 class="section-title">🎮 IoT Device Control Center</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
+            <h2 class="section-title" id="control-title">🎮 IoT Device Control Center</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;" id="control-subtitle">
                 Real-time control and monitoring of all field devices with manual override capabilities
             </p>
             
@@ -960,23 +960,23 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number stat-green" id="totalPlants">1,247</div>
-                    <div class="stat-label">Total Plants Monitored</div>
+                    <div class="stat-label" id="stat-plants-monitored">Total Plants Monitored</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number stat-emerald" id="healthyPlants">1,098</div>
-                    <div class="stat-label">Healthy Plants</div>
+                    <div class="stat-label" id="stat-healthy-plants">Healthy Plants</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number stat-amber" id="infectedPlants">149</div>
-                    <div class="stat-label">Plants Needing Treatment</div>
+                    <div class="stat-label" id="stat-infected-plants">Plants Needing Treatment</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number stat-blue" id="activeDevices">12</div>
-                    <div class="stat-label">Active Monitoring Devices</div>
+                    <div class="stat-label" id="stat-active-devices">Active Monitoring Devices</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number stat-purple" id="pesticideSaved">45.2%</div>
-                    <div class="stat-label">Pesticide Usage Reduced</div>
+                    <div class="stat-label" id="stat-pesticide-saved">Pesticide Usage Reduced</div>
                 </div>
             </div>
 
@@ -2215,7 +2215,7 @@
             english: {
                 logoText: 'Smart Farming System',
                 statusText: '🌱 System Online - Live Data Updates - No Login Required - Free for All Farmers',
-                nav: { home: '🏠 Home', dashboard: '📈 My Farm', control: '🎮 Controls', detection: '🔬 Disease Check', camera: '📹 Live Camera', field: '🗺️ Field Map', reports: '📄 Reports', notifications: '🔔 Alerts', features: '✨ Features' },
+                nav: { home: 'Home', dashboard: 'Farm', control: 'Controls', detection: 'Disease Check', camera: 'Live Camera', field: 'Field Map', reports: 'Reports', notifications: 'Alerts', features: 'Features' },
                 heroTitle: '🌾 Smart Farming for Indian Farmers',
                 heroDesc: '🌱 Use 60% less pesticide and keep your crops healthy | Save money and increase yield with AI technology | Designed specially for Indian farmers',
                 dashboardTitle: '📊 Your Farm Live Statistics',
@@ -2224,12 +2224,63 @@
                 contactToll: '☎️ Toll Free',
                 contactWhatsApp: '💬 WhatsApp',
                 btnDashboard: '📈 View My Farm',
-                btnReports: '📄 Generate Reports'
+                btnReports: '📄 Generate Reports',
+                // Dashboard Stats
+                stats: {
+                    plantsMonitored: 'Total Plants Monitored',
+                    healthyPlants: 'Healthy Plants',
+                    infectedPlants: 'Plants Needing Treatment',
+                    activeDevices: 'Active Monitoring Devices',
+                    pesticideSaved: 'Pesticide Usage Reduced'
+                },
+                // Control Section
+                control: {
+                    title: '🎮 IoT Device Control Center',
+                    subtitle: 'Real-time control and monitoring of all field devices with manual override capabilities',
+                    sprayer1: 'Sprayer Unit #1',
+                    sprayer2: 'Sprayer Unit #2',
+                    sensorHub: 'Sensor Hub #1',
+                    cameraUnit: 'Camera Unit #1',
+                    tankLevel: 'Tank Level',
+                    lastActive: 'Last Active',
+                    temperature: 'Temperature',
+                    humidity: 'Humidity',
+                    resolution: 'Resolution',
+                    detections: 'Detections',
+                    online: 'Online',
+                    recording: 'Recording',
+                    manualSpray: 'Manual Spray',
+                    stop: 'Stop',
+                    calibrate: 'Calibrate',
+                    viewData: 'View Data',
+                    liveView: 'Live View',
+                    capture: 'Capture',
+                    emergencyTitle: 'Emergency Controls',
+                    stopAll: 'STOP ALL DEVICES',
+                    sprayAll: 'SPRAY ALL ZONES',
+                    systemReset: 'SYSTEM RESET'
+                },
+                // Detection Section
+                detection: {
+                    title: '🔬 AI Plant Disease Detection',
+                    subtitle: 'Upload an image of your plant to detect diseases and get severity analysis using our AI technology',
+                    uploadTitle: 'Upload Plant Image',
+                    uploadDesc: 'Drag and drop an image or click to browse',
+                    chooseImage: 'Choose Image',
+                    analyzePlant: 'Analyze Plant Health',
+                    uploadNew: 'Upload New Image',
+                    aiResults: 'AI Analysis Results',
+                    diseaseDetected: 'Disease Detected:',
+                    severityLevel: 'Severity Level:',
+                    confidence: 'Confidence:',
+                    recommendedAction: 'Recommended Action:',
+                    treatmentCost: 'Estimated Treatment Cost:'
+                }
             },
             hindi: {
                 logoText: 'स्मार्ट खेती प्रणाली',
                 statusText: '🌱 सिस्टम चालू है - लाइव डेटा अपडेट - कोई लॉगिन आवश्यक नहीं - सभी किसानों के लिए मुफ्त',
-                nav: { home: '🏠 मुख्य पृष्ठ', dashboard: '📈 खेत की जानकारी', control: '🎮 नियंत्रण', detection: '🔬 बीमारी जांच', camera: '📹 लाइव कैमरा', field: '🗺️ खेत मानचित्र', reports: '📄 रिपोर्ट', notifications: '🔔 अलर्ट', features: '✨ सुविधाएं' },
+                nav: { home: 'मुख्य पृष्ठ', dashboard: 'खेत', control: 'नियंत्रण', detection: 'बीमारी जांच', camera: 'लाइव कैमरा', field: 'खेत मानचित्र', reports: 'रिपोर्ट', notifications: 'अलर्ट', features: 'सुविधाएं' },
                 heroTitle: '🌾 भारतीय किसानों के लिए स्मार्ट खेती',
                 heroDesc: '🌱 60% कम दवाई का उपयोग करें और फसल को स्वस्थ रखें | एआई तकनीक से खर्च कम करें और पैदावार बढ़ाएं',
                 dashboardTitle: '📊 आपके खेत की लाइव जानकारी',
@@ -2238,7 +2289,58 @@
                 contactToll: '☎️ टोल फ्री',
                 contactWhatsApp: '💬 व्हाट्सएप',
                 btnDashboard: '📈 खेत की जानकारी देखें',
-                btnReports: '📄 रिपोर्ट बनाएं'
+                btnReports: '📄 रिपोर्ट बनाएं',
+                // Dashboard Stats
+                stats: {
+                    plantsMonitored: 'कुल पौधे निगरानी में',
+                    healthyPlants: 'स्वस्थ पौधे',
+                    infectedPlants: 'इलाज चाहिए पौधे',
+                    activeDevices: 'काम कर रहे यंत्र',
+                    pesticideSaved: 'दवाई का उपयोग कम'
+                },
+                // Control Section
+                control: {
+                    title: '🎮 IoT यंत्र नियंत्रण केंद्र',
+                    subtitle: 'खेत के सभी यंत्रों का रियल-टाइम नियंत्रण और हाथ से चलाने की सुविधा',
+                    sprayer1: 'छिड़काव यंत्र #1',
+                    sprayer2: 'छिड़काव यंत्र #2',
+                    sensorHub: 'सेंसर हब #1',
+                    cameraUnit: 'कैमरा यूनिट #1',
+                    tankLevel: 'टैंक लेवल',
+                    lastActive: 'आखिरी बार काम',
+                    temperature: 'तापमान',
+                    humidity: 'नमी',
+                    resolution: 'रिज़ोल्यूशन',
+                    detections: 'बीमारी मिली',
+                    online: 'ऑनलाइन',
+                    recording: 'रिकॉर्डिंग',
+                    manualSpray: 'हाथ से छिड़काव',
+                    stop: 'रोकें',
+                    calibrate: 'कैलिब्रेट करें',
+                    viewData: 'डेटा देखें',
+                    liveView: 'लाइव व्यू',
+                    capture: 'फोटो खींचें',
+                    emergencyTitle: 'आपातकालीन नियंत्रण',
+                    stopAll: 'सभी यंत्र बंद करें',
+                    sprayAll: 'सभी क्षेत्रों में छिड़काव',
+                    systemReset: 'सिस्टम रीसेट'
+                },
+                // Detection Section
+                detection: {
+                    title: '🔬 AI पौधों की बीमारी की जांच',
+                    subtitle: 'अपने पौधे की तस्वीर अपलोड करें और AI तकनीक के जरिए बीमारी और गंभीरता का पता लगाएं',
+                    uploadTitle: 'पौधे की तस्वीर अपलोड करें',
+                    uploadDesc: 'तस्वीर खींचकर लाएं या ब्राउज करने के लिए क्लिक करें',
+                    chooseImage: 'तस्वीर चुनें',
+                    analyzePlant: 'पौधे की जांच करें',
+                    uploadNew: 'नई तस्वीर अपलोड करें',
+                    aiResults: 'AI जांच के नतीजे',
+                    diseaseDetected: 'बीमारी मिली:',
+                    severityLevel: 'गंभीरता:',
+                    confidence: 'भरोसा:',
+                    recommendedAction: 'सुझाए गए उपाय:',
+                    treatmentCost: 'इलाज की लागत:'
+                }
             },
             tamil: {
                 logoText: 'ஸ்மார்ட் விவசாயம்',
@@ -2300,11 +2402,14 @@
         
         function changeLanguage(lang) {
             const t = i18n[lang] || i18n.english;
+            
             // Top bar
             document.getElementById('statusText').textContent = t.statusText;
+            
             // Logo
             document.getElementById('logoText').textContent = t.logoText;
-            // Nav
+            
+            // Navigation
             document.getElementById('nav-home').textContent = t.nav.home;
             document.getElementById('nav-dashboard').textContent = t.nav.dashboard;
             document.getElementById('nav-control').textContent = t.nav.control;
@@ -2314,18 +2419,49 @@
             document.getElementById('nav-reports').textContent = t.nav.reports;
             document.getElementById('nav-notifications').textContent = t.nav.notifications;
             document.getElementById('nav-features').textContent = t.nav.features;
-            // Hero
+            
+            // Hero Section
             document.getElementById('heroTitle').textContent = t.heroTitle;
             document.getElementById('heroDesc').textContent = t.heroDesc;
             document.getElementById('dashboardBtn').textContent = t.btnDashboard;
             document.getElementById('reportsBtn').textContent = t.btnReports;
-            // Contact
+            
+            // Contact Section
             document.getElementById('contactTitle').textContent = t.contactTitle;
             document.getElementById('contact-main').textContent = t.contactMain;
             document.getElementById('contact-toll').textContent = t.contactToll;
             document.getElementById('contact-whatsapp').textContent = t.contactWhatsApp;
-            // Dashboard title
+            
+            // Dashboard Section
             document.getElementById('dashboardTitle').textContent = t.dashboardTitle;
+            
+            // Dashboard Stats
+            if (document.getElementById('stat-plants-monitored')) {
+                document.getElementById('stat-plants-monitored').textContent = t.stats.plantsMonitored;
+            }
+            if (document.getElementById('stat-healthy-plants')) {
+                document.getElementById('stat-healthy-plants').textContent = t.stats.healthyPlants;
+            }
+            if (document.getElementById('stat-infected-plants')) {
+                document.getElementById('stat-infected-plants').textContent = t.stats.infectedPlants;
+            }
+            if (document.getElementById('stat-active-devices')) {
+                document.getElementById('stat-active-devices').textContent = t.stats.activeDevices;
+            }
+            if (document.getElementById('stat-pesticide-saved')) {
+                document.getElementById('stat-pesticide-saved').textContent = t.stats.pesticideSaved;
+            }
+            
+            // Control Section
+            if (document.getElementById('control-title')) {
+                document.getElementById('control-title').textContent = t.control.title;
+            }
+            if (document.getElementById('control-subtitle')) {
+                document.getElementById('control-subtitle').textContent = t.control.subtitle;
+            }
+            
+            // Update language selector to show selected language
+            document.getElementById('languageSelector').value = lang;
         }
         
         // Set default language to English
