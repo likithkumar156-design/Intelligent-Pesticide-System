@@ -640,6 +640,74 @@
             line-height: 1.4;
         }
 
+        /* Enhanced Navigation Styles */
+        @media (max-width: 1200px) {
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 10px;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Field Management Responsive */
+        @media (max-width: 1024px) {
+            .field-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Notifications Responsive */
+        @media (max-width: 1024px) {
+            .notifications-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Camera Grid Responsive */
+        @media (max-width: 768px) {
+            .camera-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Control Grid Responsive */
+        @media (max-width: 768px) {
+            .control-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .detection-container {
@@ -664,6 +732,31 @@
                 max-width: none;
                 min-width: auto;
             }
+            
+            .nav-links a {
+                padding: 10px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .nav-links {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                text-align: center;
+                padding: 8px 4px;
+                font-size: 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -684,9 +777,13 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#control">IoT Control</a></li>
                     <li><a href="#detection">AI Detection</a></li>
-                    <li><a href="#reports">Generate Reports</a></li>
+                    <li><a href="#camera-feeds">Live Cameras</a></li>
+                    <li><a href="#field-management">Field Management</a></li>
+                    <li><a href="#reports">Reports</a></li>
                     <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#notifications">Alerts</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#technology">Tech Stack</a></li>
                 </ul>
@@ -706,73 +803,113 @@
         </div>
     </section>
 
-    <!-- Technology Stack Section -->
-    <section id="technology" class="features-section">
+    <!-- IoT Control Panel -->
+    <section id="control" class="features-section">
         <div class="container">
-            <h2 class="section-title">🛠️ Technology Stack</h2>
+            <h2 class="section-title">🎮 IoT Device Control Center</h2>
             <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
-                Built with cutting-edge technologies for optimal performance and reliability
+                Real-time control and monitoring of all field devices with manual override capabilities
             </p>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3 class="feature-title">AI & Machine Learning</h3>
-                    <p class="feature-desc">
-                        TensorFlow for deep learning, OpenCV for computer vision, and Python with scikit-learn 
-                        for advanced plant disease detection and analysis algorithms.
-                    </p>
+            <div class="control-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <div class="control-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="device-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="color: #1f2937; margin: 0;">🚿 Sprayer Unit #1</h3>
+                        <div class="device-status online" style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Online</div>
+                    </div>
+                    <div class="device-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #059669;">85%</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Tank Level</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #3b82f6;">2 min</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Last Active</div>
+                        </div>
+                    </div>
+                    <div class="control-buttons" style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="manualSpray(1)" style="flex: 1;">🎯 Manual Spray</button>
+                        <button class="btn btn-secondary" onclick="stopSpray(1)" style="flex: 1;">⏹️ Stop</button>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3 class="feature-title">Frontend Technologies</h3>
-                    <p class="feature-desc">
-                        React & Next.js for modern responsive interfaces, Tailwind CSS for rapid styling, 
-                        and Progressive Web App capabilities for mobile optimization.
-                    </p>
+                <div class="control-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="device-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="color: #1f2937; margin: 0;">🚿 Sprayer Unit #2</h3>
+                        <div class="device-status online" style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Online</div>
+                    </div>
+                    <div class="device-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #f59e0b;">23%</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Tank Level</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #3b82f6;">5 min</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Last Active</div>
+                        </div>
+                    </div>
+                    <div class="control-buttons" style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="manualSpray(2)" style="flex: 1;">🎯 Manual Spray</button>
+                        <button class="btn btn-secondary" onclick="stopSpray(2)" style="flex: 1;">⏹️ Stop</button>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3 class="feature-title">Backend & Infrastructure</h3>
-                    <p class="feature-desc">
-                        Node.js & Express for high-performance servers, MongoDB & PostgreSQL for hybrid database solutions, 
-                        and JWT authentication for secure access control.
-                    </p>
+                <div class="control-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="device-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="color: #1f2937; margin: 0;">📡 Sensor Hub #1</h3>
+                        <div class="device-status online" style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Online</div>
+                    </div>
+                    <div class="device-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #8b5cf6;">24°C</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Temperature</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #06b6d4;">67%</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Humidity</div>
+                        </div>
+                    </div>
+                    <div class="control-buttons" style="display: flex; gap: 1rem;">
+                        <button class="btn btn-secondary" onclick="calibrateSensor(1)" style="flex: 1;">⚙️ Calibrate</button>
+                        <button class="btn btn-secondary" onclick="viewSensorData(1)" style="flex: 1;">📊 View Data</button>
+                    </div>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">☁️</div>
-                    <h3 class="feature-title">Cloud & DevOps</h3>
-                    <p class="feature-desc">
-                        AWS & Google Cloud for scalable infrastructure, Docker & Kubernetes for containerized deployment, 
-                        and CI/CD pipelines for automated testing and deployment.
-                    </p>
+                <div class="control-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="device-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="color: #1f2937; margin: 0;">📷 Camera Unit #1</h3>
+                        <div class="device-status online" style="background: #10b981; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Recording</div>
+                    </div>
+                    <div class="device-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">4K</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Resolution</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #ef4444;">12</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">Detections</div>
+                        </div>
+                    </div>
+                    <div class="control-buttons" style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="viewLiveFeed(1)" style="flex: 1;">📺 Live View</button>
+                        <button class="btn btn-secondary" onclick="captureImage(1)" style="flex: 1;">📸 Capture</button>
+                    </div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📡</div>
-                    <h3 class="feature-title">IoT & Hardware</h3>
-                    <p class="feature-desc">
-                        Raspberry Pi & Arduino for edge computing, high-resolution 4K cameras with night vision, 
-                        and environmental sensors for temperature, humidity, and soil monitoring.
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">Analytics & Monitoring</h3>
-                    <p class="feature-desc">
-                        Apache Kafka for real-time data streaming, Grafana & Prometheus for system monitoring, 
-                        and ELK Stack (Elasticsearch, Logstash, Kibana) for comprehensive logging.
-                    </p>
+            </div>
+            
+            <!-- Emergency Controls -->
+            <div style="background: #fef2f2; border: 2px solid #fecaca; border-radius: 12px; padding: 2rem; text-align: center;">
+                <h3 style="color: #dc2626; margin-bottom: 1rem;">🚨 Emergency Controls</h3>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn" onclick="emergencyStopAll()" style="background: #dc2626; color: white; border: none;">⛔ STOP ALL DEVICES</button>
+                    <button class="btn" onclick="emergencySprayAll()" style="background: #f59e0b; color: white; border: none;">🚿 SPRAY ALL ZONES</button>
+                    <button class="btn" onclick="systemReset()" style="background: #6b7280; color: white; border: none;">🔄 SYSTEM RESET</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Live Dashboard -->
     <section id="dashboard" class="stats-section">
         <div class="container">
             <h2 class="section-title">Live System Statistics</h2>
@@ -831,6 +968,142 @@
                     </div>
                     <div class="card-value" id="yieldIncrease">23.5%</div>
                     <p style="color: #6b7280; font-size: 0.9rem;">Compared to last season</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Camera Feeds -->
+    <section id="camera-feeds" class="features-section">
+        <div class="container">
+            <h2 class="section-title">📺 Live Camera Monitoring</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
+                Real-time video feeds from field cameras with AI-powered disease detection and bounding box overlays
+            </p>
+            
+            <div class="camera-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div class="camera-feed" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="camera-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="color: #1f2937; margin: 0;">📷 Field Camera #1 - North Zone</h3>
+                        <div class="live-indicator" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                            <span style="color: #ef4444; font-size: 0.8rem; font-weight: 600;">LIVE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container" style="position: relative; background: #000; border-radius: 8px; overflow: hidden; aspect-ratio: 16/9;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📹</div>
+                            <div>Live Feed Simulation</div>
+                            <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem;">4K Resolution • 30 FPS</div>
+                        </div>
+                        
+                        <!-- Detection Overlays -->
+                        <div class="detection-overlay" style="position: absolute; top: 20%; left: 15%; width: 60px; height: 60px; border: 2px solid #ef4444; border-radius: 4px;">
+                            <div style="position: absolute; top: -25px; left: 0; background: #ef4444; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">Disease: 85%</div>
+                        </div>
+                        <div class="detection-overlay" style="position: absolute; top: 40%; right: 20%; width: 80px; height: 80px; border: 2px solid #f59e0b; border-radius: 4px;">
+                            <div style="position: absolute; top: -25px; left: 0; background: #f59e0b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">Warning: 65%</div>
+                        </div>
+                        <div class="detection-overlay" style="position: absolute; bottom: 25%; left: 25%; width: 40px; height: 40px; border: 2px solid #10b981; border-radius: 4px;">
+                            <div style="position: absolute; top: -25px; left: 0; background: #10b981; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">Healthy: 92%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <div style="text-align: center; padding: 0.5rem; background: #fef2f2; border-radius: 6px;">
+                            <div style="color: #ef4444; font-weight: bold;">3</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Diseases</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.5rem; background: #fefbf2; border-radius: 6px;">
+                            <div style="color: #f59e0b; font-weight: bold;">5</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Warnings</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.5rem; background: #f0f9ff; border-radius: 6px;">
+                            <div style="color: #10b981; font-weight: bold;">142</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Healthy</div>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-controls" style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-primary" onclick="zoomCamera(1)" style="flex: 1; font-size: 0.8rem;">🔍 Zoom</button>
+                        <button class="btn btn-secondary" onclick="panCamera(1)" style="flex: 1; font-size: 0.8rem;">📡 Pan</button>
+                        <button class="btn btn-secondary" onclick="recordCamera(1)" style="flex: 1; font-size: 0.8rem;">🎥 Record</button>
+                    </div>
+                </div>
+                
+                <div class="camera-feed" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div class="camera-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="color: #1f2937; margin: 0;">📷 Field Camera #2 - South Zone</h3>
+                        <div class="live-indicator" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                            <span style="color: #ef4444; font-size: 0.8rem; font-weight: 600;">LIVE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container" style="position: relative; background: #000; border-radius: 8px; overflow: hidden; aspect-ratio: 16/9;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📹</div>
+                            <div>Live Feed Simulation</div>
+                            <div style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem;">4K Resolution • 30 FPS</div>
+                        </div>
+                        
+                        <!-- Detection Overlays -->
+                        <div class="detection-overlay" style="position: absolute; top: 30%; left: 30%; width: 50px; height: 50px; border: 2px solid #10b981; border-radius: 4px;">
+                            <div style="position: absolute; top: -25px; left: 0; background: #10b981; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">Healthy: 96%</div>
+                        </div>
+                        <div class="detection-overlay" style="position: absolute; bottom: 30%; right: 15%; width: 70px; height: 70px; border: 2px solid #f59e0b; border-radius: 4px;">
+                            <div style="position: absolute; top: -25px; left: 0; background: #f59e0b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">Monitor: 72%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0;">
+                        <div style="text-align: center; padding: 0.5rem; background: #fef2f2; border-radius: 6px;">
+                            <div style="color: #ef4444; font-weight: bold;">0</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Diseases</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.5rem; background: #fefbf2; border-radius: 6px;">
+                            <div style="color: #f59e0b; font-weight: bold;">2</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Warnings</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.5rem; background: #f0f9ff; border-radius: 6px;">
+                            <div style="color: #10b981; font-weight: bold;">198</div>
+                            <div style="font-size: 0.7rem; color: #6b7280;">Healthy</div>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-controls" style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-primary" onclick="zoomCamera(2)" style="flex: 1; font-size: 0.8rem;">🔍 Zoom</button>
+                        <button class="btn btn-secondary" onclick="panCamera(2)" style="flex: 1; font-size: 0.8rem;">📡 Pan</button>
+                        <button class="btn btn-secondary" onclick="recordCamera(2)" style="flex: 1; font-size: 0.8rem;">🎥 Record</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Detection Summary -->
+            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                <h3 style="color: #1f2937; margin-bottom: 1.5rem; text-align: center;">🤖 AI Detection Summary (Last Hour)</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center; padding: 1.5rem; background: #fef2f2; border-radius: 8px; border-left: 4px solid #ef4444;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #ef4444; margin-bottom: 0.5rem;">3</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Critical Diseases</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">Immediate treatment required</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #fefbf2; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #f59e0b; margin-bottom: 0.5rem;">7</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Warning Signs</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">Monitor closely</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #f0f9ff; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #10b981; margin-bottom: 0.5rem;">340</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Healthy Plants</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">No action needed</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #6b7280;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #6b7280; margin-bottom: 0.5rem;">96.2%</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Detection Accuracy</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">AI confidence level</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -912,6 +1185,177 @@
         </div>
     </section>
 
+    <!-- Field Management System -->
+    <section id="field-management" class="features-section">
+        <div class="container">
+            <h2 class="section-title">🗺️ Field Management & GPS Tracking</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
+                Comprehensive field mapping with GPS coordinates, treatment zones, and automated scheduling system
+            </p>
+            
+            <div class="field-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+                <!-- Field Map -->
+                <div class="field-map" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="color: #1f2937; margin: 0;">🌾 Farm Layout - GPS Mapped Zones</h3>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" onclick="refreshMap()" style="font-size: 0.8rem;">🔄 Refresh</button>
+                            <button class="btn btn-primary" onclick="fullscreenMap()" style="font-size: 0.8rem;">🔍 Fullscreen</button>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container" style="position: relative; background: linear-gradient(45deg, #f0f9ff 0%, #e0f2fe 50%, #dcfce7 100%); border-radius: 8px; height: 400px; overflow: hidden; border: 2px solid #e5e7eb;">
+                        <!-- Simulated Field Zones -->
+                        <div class="field-zone zone-a" style="position: absolute; top: 10%; left: 10%; width: 35%; height: 35%; background: rgba(16, 185, 129, 0.3); border: 2px solid #10b981; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="selectZone('A')">
+                            <div style="text-align: center; color: #065f46; font-weight: bold;">
+                                <div>🌿 Zone A</div>
+                                <div style="font-size: 0.8rem;">Healthy</div>
+                                <div style="font-size: 0.7rem;">GPS: 40.7128, -74.0060</div>
+                            </div>
+                        </div>
+                        
+                        <div class="field-zone zone-b" style="position: absolute; top: 10%; right: 10%; width: 35%; height: 35%; background: rgba(245, 158, 11, 0.3); border: 2px solid #f59e0b; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="selectZone('B')">
+                            <div style="text-align: center; color: #92400e; font-weight: bold;">
+                                <div>🔍 Zone B</div>
+                                <div style="font-size: 0.8rem;">Monitor</div>
+                                <div style="font-size: 0.7rem;">GPS: 40.7158, -74.0030</div>
+                            </div>
+                        </div>
+                        
+                        <div class="field-zone zone-c" style="position: absolute; bottom: 15%; left: 10%; width: 35%; height: 35%; background: rgba(239, 68, 68, 0.3); border: 2px solid #ef4444; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="selectZone('C')">
+                            <div style="text-align: center; color: #991b1b; font-weight: bold;">
+                                <div>⚠️ Zone C</div>
+                                <div style="font-size: 0.8rem;">Disease</div>
+                                <div style="font-size: 0.7rem;">GPS: 40.7098, -74.0090</div>
+                            </div>
+                        </div>
+                        
+                        <div class="field-zone zone-d" style="position: absolute; bottom: 15%; right: 10%; width: 35%; height: 35%; background: rgba(16, 185, 129, 0.3); border: 2px solid #10b981; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="selectZone('D')">
+                            <div style="text-align: center; color: #065f46; font-weight: bold;">
+                                <div>🌿 Zone D</div>
+                                <div style="font-size: 0.8rem;">Healthy</div>
+                                <div style="font-size: 0.7rem;">GPS: 40.7068, -74.0020</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sprayer Positions -->
+                        <div class="sprayer-position" style="position: absolute; top: 50%; left: 15%; width: 20px; height: 20px; background: #059669; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" title="Sprayer #1">
+                            <div style="position: absolute; top: -30px; left: -15px; background: #059669; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.6rem; white-space: nowrap;">🚿 Sprayer #1</div>
+                        </div>
+                        
+                        <div class="sprayer-position" style="position: absolute; top: 50%; right: 25%; width: 20px; height: 20px; background: #059669; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" title="Sprayer #2">
+                            <div style="position: absolute; top: -30px; left: -15px; background: #059669; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.6rem; white-space: nowrap;">🚿 Sprayer #2</div>
+                        </div>
+                        
+                        <!-- Weather Station -->
+                        <div class="weather-station" style="position: absolute; top: 20%; left: 50%; width: 16px; height: 16px; background: #3b82f6; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3);" title="Weather Station">
+                            <div style="position: absolute; top: -30px; left: -20px; background: #3b82f6; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.6rem; white-space: nowrap;">🌡️ Weather</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Legend -->
+                    <div class="map-legend" style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 12px; height: 12px; background: #10b981; border-radius: 2px;"></div>
+                            <span style="font-size: 0.8rem; color: #6b7280;">Healthy</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 12px; height: 12px; background: #f59e0b; border-radius: 2px;"></div>
+                            <span style="font-size: 0.8rem; color: #6b7280;">Monitor</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 12px; height: 12px; background: #ef4444; border-radius: 2px;"></div>
+                            <span style="font-size: 0.8rem; color: #6b7280;">Disease</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 12px; height: 12px; background: #059669; border-radius: 50%;"></div>
+                            <span style="font-size: 0.8rem; color: #6b7280;">Sprayers</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 12px; height: 12px; background: #3b82f6; border-radius: 50%;"></div>
+                            <span style="font-size: 0.8rem; color: #6b7280;">Sensors</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Zone Info Panel -->
+                <div class="zone-info-panel" style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; height: fit-content;">
+                    <h3 style="color: #1f2937; margin-bottom: 1rem;">📍 Zone Details</h3>
+                    
+                    <div id="zone-info" style="min-height: 200px;">
+                        <div style="text-align: center; color: #6b7280; padding: 2rem;">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">👆</div>
+                            <p>Click on a zone in the map to view details</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+                        <h4 style="color: #1f2937; margin-bottom: 1rem; font-size: 1rem;">Quick Actions</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <button class="btn btn-primary" onclick="scheduleSpray()" style="width: 100%; font-size: 0.8rem;">📅 Schedule Treatment</button>
+                            <button class="btn btn-secondary" onclick="generateZoneReport()" style="width: 100%; font-size: 0.8rem;">📊 Zone Report</button>
+                            <button class="btn btn-secondary" onclick="alertsForZone()" style="width: 100%; font-size: 0.8rem;">🔔 Setup Alerts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Treatment Schedule -->
+            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 style="color: #1f2937; margin: 0;">📅 Treatment Schedule & Automation</h3>
+                    <button class="btn btn-primary" onclick="addSchedule()">➕ Add Schedule</button>
+                </div>
+                
+                <div class="schedule-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div class="schedule-item" style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1.5rem; position: relative;">
+                        <div style="position: absolute; top: -8px; right: 15px; background: #3b82f6; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">ACTIVE</div>
+                        <h4 style="color: #1e40af; margin-bottom: 1rem;">Zone C - Emergency Treatment</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem;">
+                            <div><strong>Time:</strong> 06:00 Daily</div>
+                            <div><strong>Duration:</strong> 15 minutes</div>
+                            <div><strong>Pesticide:</strong> Copper Fungicide</div>
+                            <div><strong>Next Run:</strong> Tomorrow</div>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" onclick="editSchedule('C')">Edit</button>
+                            <button class="btn" style="flex: 1; font-size: 0.7rem; background: #ef4444; color: white; border: none;" onclick="stopSchedule('C')">Stop</button>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-item" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1.5rem; position: relative;">
+                        <div style="position: absolute; top: -8px; right: 15px; background: #10b981; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">SCHEDULED</div>
+                        <h4 style="color: #065f46; margin-bottom: 1rem;">Zone A & D - Preventive</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem;">
+                            <div><strong>Time:</strong> Weekly (Sundays)</div>
+                            <div><strong>Duration:</strong> 30 minutes</div>
+                            <div><strong>Pesticide:</strong> Organic Neem</div>
+                            <div><strong>Next Run:</strong> In 3 days</div>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" onclick="editSchedule('AD')">Edit</button>
+                            <button class="btn btn-primary" style="flex: 1; font-size: 0.7rem;" onclick="runNow('AD')">Run Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-item" style="background: #fefbf2; border: 1px solid #fed7aa; border-radius: 8px; padding: 1.5rem; position: relative;">
+                        <div style="position: absolute; top: -8px; right: 15px; background: #f59e0b; color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">PENDING</div>
+                        <h4 style="color: #92400e; margin-bottom: 1rem;">Zone B - Monitoring</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.8rem;">
+                            <div><strong>Condition:</strong> If disease > 60%</div>
+                            <div><strong>Duration:</strong> 20 minutes</div>
+                            <div><strong>Pesticide:</strong> Broad Spectrum</div>
+                            <div><strong>Status:</strong> Monitoring</div>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" onclick="editSchedule('B')">Edit</button>
+                            <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" onclick="activateSchedule('B')">Activate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Generate Reports Section -->
     <section id="reports" class="features-section">
@@ -1041,6 +1485,235 @@
         </div>
     </section>
 
+    <!-- Notification Center -->
+    <section id="notifications" class="features-section">
+        <div class="container">
+            <h2 class="section-title">🔔 Smart Alert & Notification Center</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
+                Real-time alerts, SMS notifications, email reports, and push notifications for critical farming events
+            </p>
+            
+            <div class="notifications-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+                <!-- Active Alerts Panel -->
+                <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3 style="color: #1f2937; margin: 0;">🚨 Active Alerts</h3>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <span style="background: #ef4444; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">3 CRITICAL</span>
+                            <span style="background: #f59e0b; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">5 WARNING</span>
+                        </div>
+                    </div>
+                    
+                    <div class="alerts-list" style="display: flex; flex-direction: column; gap: 1rem; max-height: 400px; overflow-y: auto;">
+                        <!-- Critical Alert -->
+                        <div class="alert-item" style="padding: 1rem; border-left: 4px solid #ef4444; background: #fef2f2; border-radius: 6px; position: relative;">
+                            <div style="position: absolute; top: 8px; right: 8px; font-size: 0.7rem; color: #6b7280;">2 min ago</div>
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div style="font-size: 1.5rem;">⚠️</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem;">CRITICAL: Disease Outbreak in Zone C</div>
+                                    <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Severe bacterial infection detected. Immediate treatment required.</div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-primary" onclick="treatZone('C')" style="font-size: 0.7rem; padding: 4px 12px;">🚿 Treat Now</button>
+                                        <button class="btn btn-secondary" onclick="acknowledgeAlert(1)" style="font-size: 0.7rem; padding: 4px 12px;">✓ Acknowledge</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Warning Alert -->
+                        <div class="alert-item" style="padding: 1rem; border-left: 4px solid #f59e0b; background: #fefbf2; border-radius: 6px; position: relative;">
+                            <div style="position: absolute; top: 8px; right: 8px; font-size: 0.7rem; color: #6b7280;">15 min ago</div>
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div style="font-size: 1.5rem;">🔍</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem;">WARNING: Sprayer #2 Low Tank Level</div>
+                                    <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Tank level at 23%. Refill recommended before next scheduled treatment.</div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-primary" onclick="scheduleRefill(2)" style="font-size: 0.7rem; padding: 4px 12px;">⛽ Schedule Refill</button>
+                                        <button class="btn btn-secondary" onclick="acknowledgeAlert(2)" style="font-size: 0.7rem; padding: 4px 12px;">✓ Acknowledge</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Info Alert -->
+                        <div class="alert-item" style="padding: 1rem; border-left: 4px solid #3b82f6; background: #f0f9ff; border-radius: 6px; position: relative;">
+                            <div style="position: absolute; top: 8px; right: 8px; font-size: 0.7rem; color: #6b7280;">1 hour ago</div>
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div style="font-size: 1.5rem;">📊</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: #2563eb; margin-bottom: 0.5rem;">INFO: Weekly Treatment Completed</div>
+                                    <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">Zone A and D preventive treatment successfully completed.</div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-secondary" onclick="viewTreatmentReport()" style="font-size: 0.7rem; padding: 4px 12px;">📊 View Report</button>
+                                        <button class="btn btn-secondary" onclick="acknowledgeAlert(3)" style="font-size: 0.7rem; padding: 4px 12px;">✓ Dismiss</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Weather Alert -->
+                        <div class="alert-item" style="padding: 1rem; border-left: 4px solid #8b5cf6; background: #faf5ff; border-radius: 6px; position: relative;">
+                            <div style="position: absolute; top: 8px; right: 8px; font-size: 0.7rem; color: #6b7280;">3 hours ago</div>
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div style="font-size: 1.5rem;">🌧️</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; color: #7c3aed; margin-bottom: 0.5rem;">WEATHER: Rain Expected Tomorrow</div>
+                                    <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 0.5rem;">40% chance of rain. Consider rescheduling outdoor treatments.</div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-primary" onclick="adjustSchedule()" style="font-size: 0.7rem; padding: 4px 12px;">📅 Adjust Schedule</button>
+                                        <button class="btn btn-secondary" onclick="acknowledgeAlert(4)" style="font-size: 0.7rem; padding: 4px 12px;">✓ Got It</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Settings -->
+                <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                    <h3 style="color: #1f2937; margin-bottom: 2rem;">⚙️ Notification Settings</h3>
+                    
+                    <!-- Email Notifications -->
+                    <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="color: #1f2937; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                                <span>📧</span> Email Notifications
+                            </h4>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span style="font-size: 0.8rem; color: #059669; font-weight: 600;">Enabled</span>
+                            </label>
+                        </div>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem;">farmer@example.com</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Critical alerts</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Treatment reports</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 0.5rem;">
+                                <span>Weather updates</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>System maintenance</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- SMS Notifications -->
+                    <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f0f9ff; border-radius: 8px; border: 1px solid #bae6fd;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="color: #1f2937; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                                <span>📱</span> SMS Alerts
+                            </h4>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span style="font-size: 0.8rem; color: #2563eb; font-weight: 600;">Active</span>
+                            </label>
+                        </div>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem;">+1 (555) 123-4567</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Critical only</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 0.5rem;">
+                                <span>Device failures</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Treatment complete</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 0.5rem;">
+                                <span>Daily summaries</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Push Notifications -->
+                    <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="color: #1f2937; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🔔</span> Push Notifications
+                            </h4>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span style="font-size: 0.8rem; color: #16a34a; font-weight: 600;">Enabled</span>
+                            </label>
+                        </div>
+                        <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem;">Mobile App & Browser</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Real-time alerts</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>Treatment reminders</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" style="margin-right: 0.5rem;">
+                                <span>Weather warnings</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" checked style="margin-right: 0.5rem;">
+                                <span>System updates</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Save Settings Button -->
+                    <div style="text-align: center;">
+                        <button class="btn btn-primary" onclick="saveNotificationSettings()" style="width: 100%;">💾 Save Notification Settings</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notification History -->
+            <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 style="color: #1f2937; margin: 0;">📅 Notification History & Analytics</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-secondary" onclick="exportHistory()">📊 Export</button>
+                        <button class="btn btn-secondary" onclick="clearHistory()">🗑️ Clear</button>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center; padding: 1.5rem; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #dc2626; margin-bottom: 0.5rem;">47</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Critical Alerts</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">This month</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #fefbf2; border-radius: 8px; border: 1px solid #fed7aa;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #d97706; margin-bottom: 0.5rem;">156</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Warnings Sent</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">This month</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #f0f9ff; border-radius: 8px; border: 1px solid #bae6fd;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #2563eb; margin-bottom: 0.5rem;">98.5%</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Delivery Success</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">Email & SMS</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: #f0fdf4; border-radius: 8px; border: 1px solid #bbf7d0;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #16a34a; margin-bottom: 0.5rem;">2.3 min</div>
+                        <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Avg Response Time</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">Critical alerts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Advanced Features Section -->
     <section id="features" class="features-section">
         <div class="container">
@@ -1103,6 +1776,71 @@
         </div>
     </section>
 
+    <!-- Technology Stack Section -->
+    <section id="technology" class="features-section">
+        <div class="container">
+            <h2 class="section-title">🛠️ Technology Stack</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 3rem;">
+                Built with cutting-edge technologies for optimal performance and reliability
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI & Machine Learning</h3>
+                    <p class="feature-desc">
+                        TensorFlow for deep learning, OpenCV for computer vision, and Python with scikit-learn 
+                        for advanced plant disease detection and analysis algorithms.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Frontend Technologies</h3>
+                    <p class="feature-desc">
+                        React & Next.js for modern responsive interfaces, Tailwind CSS for rapid styling, 
+                        and Progressive Web App capabilities for mobile optimization.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3 class="feature-title">Backend & Infrastructure</h3>
+                    <p class="feature-desc">
+                        Node.js & Express for high-performance servers, MongoDB & PostgreSQL for hybrid database solutions, 
+                        and JWT authentication for secure access control.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3 class="feature-title">Cloud & DevOps</h3>
+                    <p class="feature-desc">
+                        AWS & Google Cloud for scalable infrastructure, Docker & Kubernetes for containerized deployment, 
+                        and CI/CD pipelines for automated testing and deployment.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3 class="feature-title">IoT & Hardware</h3>
+                    <p class="feature-desc">
+                        Raspberry Pi & Arduino for edge computing, high-resolution 4K cameras with night vision, 
+                        and environmental sensors for temperature, humidity, and soil monitoring.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Analytics & Monitoring</h3>
+                    <p class="feature-desc">
+                        Apache Kafka for real-time data streaming, Grafana & Prometheus for system monitoring, 
+                        and ELK Stack (Elasticsearch, Logstash, Kibana) for comprehensive logging.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1427,6 +2165,218 @@
         console.log('📊 Performance Analytics dashboard active');
         console.log('🛠️ Technology stack information available');
         console.log('🔗 Ready for deployment and sharing!');
+        
+        // IoT Control Functions
+        function manualSpray(unitId) {
+            alert(`🚿 Initiating Manual Spray for Unit #${unitId}...\n\n⚙️ System Status:\n• Target zone identified\n• Pesticide mixture: Copper Fungicide\n• Spray duration: 5 minutes\n• Coverage area: 50 sq meters\n\n✓ Manual spray operation started successfully!`);
+            console.log(`Manual spray activated for unit ${unitId}`);
+        }
+        
+        function stopSpray(unitId) {
+            alert(`⏹️ Stopping Spray Operation for Unit #${unitId}...\n\n✓ Spray operation terminated\n• Total spray time: 3.2 minutes\n• Pesticide used: 2.3 liters\n• Area covered: 32 sq meters`);
+            console.log(`Spray stopped for unit ${unitId}`);
+        }
+        
+        function calibrateSensor(sensorId) {
+            alert(`⚙️ Calibrating Sensor Hub #${sensorId}...\n\n🔧 Calibration Process:\n• Temperature sensor: ✓ Calibrated\n• Humidity sensor: ✓ Calibrated\n• Soil moisture: ✓ Calibrated\n• pH levels: ✓ Calibrated\n\n✅ All sensors calibrated successfully!`);
+            console.log(`Sensor ${sensorId} calibrated`);
+        }
+        
+        function viewSensorData(sensorId) {
+            alert(`📊 Sensor Hub #${sensorId} - Live Data:\n\n🌡️ Temperature: 24.3°C\n💧 Humidity: 67.2%\n🌱 Soil Moisture: 45.8%\n⚙️ pH Level: 6.8\n🌬️ Wind Speed: 12.5 km/h\n\nℹ️ Data updated 30 seconds ago`);
+        }
+        
+        function emergencyStopAll() {
+            if (confirm('⛔ EMERGENCY STOP\n\nThis will immediately stop ALL devices and spraying operations.\n\nAre you sure you want to proceed?')) {
+                alert('🚨 EMERGENCY STOP ACTIVATED\n\n✓ All sprayers stopped\n✓ All cameras paused\n✓ All sensors on standby\n✓ System in safe mode\n\n⚠️ Manual restart required');
+            }
+        }
+        
+        function emergencySprayAll() {
+            if (confirm('🚿 EMERGENCY SPRAY ALL ZONES\n\nThis will activate ALL sprayers immediately.\n\nAre you sure you want to proceed?')) {
+                alert('🚿 EMERGENCY SPRAY ACTIVATED\n\n✓ All zones being treated\n✓ High-intensity spray mode\n✓ Estimated duration: 15 minutes\n✓ All devices operational\n\n📊 Check live feeds for progress');
+            }
+        }
+        
+        function systemReset() {
+            if (confirm('🔄 SYSTEM RESET\n\nThis will restart all devices and reinitialize the system.\n\nAre you sure you want to proceed?')) {
+                alert('🔄 SYSTEM RESET INITIATED\n\n⏳ Restarting all devices...\n⏳ Reinitializing sensors...\n⏳ Reloading configurations...\n\n✓ System restart completed\n✓ All devices back online');
+            }
+        }
+        
+        // Camera Control Functions
+        function zoomCamera(cameraId) {
+            alert(`🔍 Zooming Camera #${cameraId}...\n\n• Zoom level: 2.5x\n• Focus: Auto-adjusted\n• Resolution: 4K maintained\n• AI detection: Enhanced\n\n✓ Zoom operation completed`);
+        }
+        
+        function panCamera(cameraId) {
+            alert(`📡 Panning Camera #${cameraId}...\n\n• Direction: 360° sweep\n• Speed: Slow scan\n• Coverage: Full field view\n• AI tracking: Active\n\n✓ Pan operation in progress`);
+        }
+        
+        function recordCamera(cameraId) {
+            alert(`🎥 Recording Camera #${cameraId}...\n\n• Resolution: 4K @ 30fps\n• Storage: Cloud + Local\n• Duration: Continuous\n• Detection overlay: Enabled\n\n✓ Recording started successfully`);
+        }
+        
+        function viewLiveFeed(cameraId) {
+            alert(`📺 Opening Live Feed for Camera #${cameraId}...\n\n• Stream quality: 4K\n• Latency: <100ms\n• AI overlays: Active\n• Recording: Available\n\n✓ Live feed ready to view`);
+        }
+        
+        function captureImage(cameraId) {
+            alert(`📸 Capturing Image from Camera #${cameraId}...\n\n• Resolution: 4K\n• Format: JPG + RAW\n• AI analysis: Queued\n• Storage: Saved to gallery\n\n✓ Image captured successfully`);
+        }
+        
+        // Field Management Functions
+        function selectZone(zoneId) {
+            const zoneData = {
+                'A': {
+                    name: 'Zone A - North Field',
+                    status: 'Healthy',
+                    color: '#10b981',
+                    plants: 87,
+                    diseased: 2,
+                    lastTreatment: '5 days ago',
+                    nextTreatment: 'In 2 days',
+                    pesticide: 'Organic Neem',
+                    gps: '40.7128, -74.0060'
+                },
+                'B': {
+                    name: 'Zone B - East Field', 
+                    status: 'Monitor',
+                    color: '#f59e0b',
+                    plants: 92,
+                    diseased: 12,
+                    lastTreatment: '2 days ago',
+                    nextTreatment: 'If condition worsens',
+                    pesticide: 'Broad Spectrum',
+                    gps: '40.7158, -74.0030'
+                },
+                'C': {
+                    name: 'Zone C - South Field',
+                    status: 'Disease Detected',
+                    color: '#ef4444',
+                    plants: 95,
+                    diseased: 23,
+                    lastTreatment: '1 hour ago',
+                    nextTreatment: 'Daily at 6 AM',
+                    pesticide: 'Copper Fungicide',
+                    gps: '40.7098, -74.0090'
+                },
+                'D': {
+                    name: 'Zone D - West Field',
+                    status: 'Healthy',
+                    color: '#10b981',
+                    plants: 89,
+                    diseased: 1,
+                    lastTreatment: '6 days ago',
+                    nextTreatment: 'In 1 day',
+                    pesticide: 'Organic Neem',
+                    gps: '40.7068, -74.0020'
+                }
+            };
+            
+            const zone = zoneData[zoneId];
+            const healthPercentage = ((zone.plants - zone.diseased) / zone.plants * 100).toFixed(1);
+            
+            document.getElementById('zone-info').innerHTML = `
+                <div style="padding: 1rem; background: ${zone.color}15; border-radius: 8px; border-left: 4px solid ${zone.color}; margin-bottom: 1rem;">
+                    <h4 style="color: ${zone.color}; margin: 0 0 0.5rem 0;">${zone.name}</h4>
+                    <div style="color: ${zone.color}; font-weight: 600; margin-bottom: 1rem;">🎨 Status: ${zone.status}</div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                    <div><strong>🌿 Total Plants:</strong> ${zone.plants}</div>
+                    <div><strong>🔴 Diseased:</strong> ${zone.diseased}</div>
+                    <div><strong>📍 GPS:</strong> ${zone.gps}</div>
+                    <div><strong>📊 Health:</strong> ${healthPercentage}%</div>
+                </div>
+                
+                <div style="font-size: 0.8rem; color: #6b7280; margin-bottom: 1rem;">
+                    <div style="margin-bottom: 0.5rem;"><strong>Last Treatment:</strong> ${zone.lastTreatment}</div>
+                    <div style="margin-bottom: 0.5rem;"><strong>Next Treatment:</strong> ${zone.nextTreatment}</div>
+                    <div><strong>Recommended Pesticide:</strong> ${zone.pesticide}</div>
+                </div>
+            `;
+        }
+        
+        function refreshMap() {
+            alert('🔄 Refreshing field map...\n\n✓ GPS coordinates updated\n✓ Device positions refreshed\n✓ Zone boundaries recalculated\n✓ Real-time data synchronized');
+        }
+        
+        function fullscreenMap() {
+            alert('🔍 Opening fullscreen map view...\n\nFeatures available:\n• High-resolution satellite view\n• Interactive zone boundaries\n• Real-time device tracking\n• Weather overlay\n• Historical treatment data');
+        }
+        
+        function scheduleSpray() {
+            alert('📅 Schedule Treatment\n\nOpening treatment scheduler...\n\n• Select treatment type\n• Choose date and time\n• Set pesticide type\n• Configure spray duration\n• Enable/disable automation');
+        }
+        
+        function generateZoneReport() {
+            alert('📊 Generating Zone Report...\n\nReport will include:\n• Plant health summary\n• Treatment history\n• Cost analysis\n• Recommendation\n• Photo documentation\n\nReport ready in 30 seconds!');
+        }
+        
+        function alertsForZone() {
+            alert('🔔 Setting up zone alerts...\n\nAlert types available:\n• Disease detection\n• Treatment reminders\n• Weather warnings\n• Device malfunctions\n• Threshold breaches');
+        }
+        
+        // Schedule Management Functions
+        function addSchedule() {
+            alert('➕ Add New Treatment Schedule\n\nScheduler Options:\n• Zone selection\n• Date/time configuration\n• Pesticide type\n• Treatment duration\n• Automation rules\n• Weather conditions\n\nOpening schedule creator...');
+        }
+        
+        function editSchedule(zoneId) {
+            alert(`✏️ Editing schedule for Zone ${zoneId}...\n\nCurrent settings:\n• Modify timing\n• Change pesticide\n• Adjust duration\n• Update conditions\n• Enable/disable\n\nOpening schedule editor...`);
+        }
+        
+        function stopSchedule(zoneId) {
+            if (confirm(`⏹️ Stop schedule for Zone ${zoneId}?\n\nThis will halt all automated treatments for this zone.`)) {
+                alert('✓ Schedule stopped successfully\n• Automated treatments paused\n• Manual control enabled\n• Notifications disabled');
+            }
+        }
+        
+        function runNow(zoneId) {
+            if (confirm(`▶️ Run treatment for Zone ${zoneId} now?\n\nThis will start immediate treatment.`)) {
+                alert('✓ Treatment started immediately\n• Sprayers activated\n• Expected duration: 30 minutes\n• Progress tracking enabled');
+            }
+        }
+        
+        function activateSchedule(zoneId) {
+            alert(`✓ Schedule activated for Zone ${zoneId}\n\n• Automated monitoring enabled\n• Treatment triggers set\n• Notifications active\n• Condition-based spraying ready`);
+        }
+        
+        // Notification Functions
+        function treatZone(zoneId) {
+            alert(`🚿 Emergency Treatment - Zone ${zoneId}\n\n✓ Sprayers activated\n✓ High-priority treatment\n✓ Duration: 15 minutes\n✓ Monitoring enhanced\n\n📈 Progress will be tracked in real-time`);
+        }
+        
+        function acknowledgeAlert(alertId) {
+            alert(`✓ Alert #${alertId} acknowledged\n\n• Alert marked as seen\n• Timestamp recorded\n• Action logged\n• Follow-up scheduled if needed`);
+        }
+        
+        function scheduleRefill(unitId) {
+            alert(`⛽ Scheduling refill for Sprayer #${unitId}...\n\n• Current level: 23%\n• Refill priority: High\n• Maintenance crew notified\n• ETA: 2 hours\n\n✓ Refill scheduled successfully`);
+        }
+        
+        function viewTreatmentReport() {
+            alert('📈 Opening Treatment Report...\n\nReport includes:\n• Treatment effectiveness\n• Time and duration\n• Pesticide usage\n• Area coverage\n• Cost analysis\n• Before/after photos');
+        }
+        
+        function adjustSchedule() {
+            alert('📅 Weather-based Schedule Adjustment\n\n• Rain forecast detected\n• Treatments rescheduled\n• Indoor operations prioritized\n• Notifications sent\n\n✓ Schedule optimized for weather');
+        }
+        
+        function saveNotificationSettings() {
+            alert('💾 Notification Settings Saved!\n\n✓ Email preferences updated\n✓ SMS settings configured\n✓ Push notifications set\n✓ Alert priorities adjusted\n\nℹ️ Changes will take effect immediately');
+        }
+        
+        function exportHistory() {
+            alert('📁 Exporting Notification History...\n\nExport includes:\n• All alerts (last 90 days)\n• Response times\n• Action taken\n• Resolution status\n• Performance metrics\n\n📋 File ready for download!');
+        }
+        
+        function clearHistory() {
+            if (confirm('🗑️ Clear notification history?\n\nThis will permanently delete all notification records.\nThis action cannot be undone.')) {
+                alert('✓ Notification history cleared\n• All old alerts removed\n• Statistics reset\n• Fresh start enabled\n• Performance counters reset');
+            }
+        }
     </script>
 </body>
 </html>
